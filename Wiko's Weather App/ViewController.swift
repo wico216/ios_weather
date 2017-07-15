@@ -59,7 +59,7 @@ class ViewController: UIViewController, WeatherServiceDelegate {
     }
     
     
-    // Mark: - Weather Service Delegate
+    // Mark: - Weather Service Delegate Methods
     
     func setWeather(weather: Weather) {
         //print("*** Set Weather")
@@ -70,6 +70,15 @@ class ViewController: UIViewController, WeatherServiceDelegate {
         cityButton.setTitle(weather.cityName, forState: .Normal)
         iconImage.image = UIImage(named: weather.icon)
     }
+    
+    func weatherErrorWithMessage(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(ok)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
