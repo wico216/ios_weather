@@ -18,6 +18,7 @@ class ViewController: UIViewController, WeatherServiceDelegate {
     @IBOutlet weak var descriptionLabel: UILabel!
     //@IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var cityButton: UIButton!
+    @IBOutlet weak var iconImage: UIImageView!
     
     
     @IBAction func setCityTapped(sender: UIButton) {
@@ -64,14 +65,12 @@ class ViewController: UIViewController, WeatherServiceDelegate {
         //print("*** Set Weather")
         //print("City: \(weather.cityName) temp: \(weather.temp) description: \(weather.description)")
         //cityLabel.text = weather.cityName
-        tempLabel.text = "\(weather.tempF) ˚F"
+        tempLabel.text = " \(weather.tempC)˚"
         descriptionLabel.text = weather.description
         cityButton.setTitle(weather.cityName, forState: .Normal)
-        
+        iconImage.image = UIImage(named: weather.icon)
     }
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -83,7 +82,5 @@ class ViewController: UIViewController, WeatherServiceDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

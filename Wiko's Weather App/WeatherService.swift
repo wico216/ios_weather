@@ -19,7 +19,7 @@ class WeatherService {
     func getWeather(city: String) {
         
         let cityEscaped = city.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
-        let appid = "836cb895f2c54a4312c8bd6cf5e2edc6"
+        let appid = "2467d46a5e4299f20b4dffdd7c17439b"
         
         let path = "http://api.openweathermap.org/data/2.5/weather?q=\(cityEscaped!)&appid=\(appid)"
         let url = NSURL(string: path)
@@ -33,10 +33,11 @@ class WeatherService {
             let temp = json["main"]["temp"].double
             let name = json["name"].string
             let desc = json["weather"][0]["description"].string
+            let icon = json["weather"][0]["icon"].string
             
              
             
-            let weather = Weather(cityName: name!, temp: temp!, description: desc!)
+            let weather = Weather(cityName: name!, temp: temp!, description: desc!, icon: icon!)
             
             if self.delegate != nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in

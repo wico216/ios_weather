@@ -12,19 +12,21 @@ struct Weather {
     let cityName: String
     let temp: Double
     let description: String
+    let icon: String
     
     //Convert Kelvin Temp to Celcius
-    var tempF: Double {
+    var tempC: Int {
         get {
-            return (9/5 * (temp - 273) + 32)
+            return Int(9/5 * (temp - 273) + 32)
         }
     }
     
     
-    init(cityName: String, temp: Double, description: String)
+    init(cityName: String, temp: Double, description: String, icon: String)
     {
         self.cityName = cityName
         self.temp = temp
         self.description = description
+        self.icon = icon
     }
 }
